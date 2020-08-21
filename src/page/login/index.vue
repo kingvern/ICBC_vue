@@ -90,9 +90,13 @@
                         const jwt = res.headers['authorization']
                         // 把数据共享出去
                         this.SET_TOKEN(jwt)
-
                         this.LOGIN(loginData);
-                        this.$router.push('home');
+                        if(loginData.data.card_II){
+                            alert("您还没有II类卡，请注册II类卡！")
+                        }else{
+
+                            this.$router.push('home');
+                        }
                     }
 
 
