@@ -1,11 +1,27 @@
 <template>
   <div class="card_border">
     <headeritem :text="headText"></headeritem>
+<!--    <el-main>-->
+<!--      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">-->
+<!--        <el-form-item label="用户名" prop="username">-->
+<!--          <el-input v-model="ruleForm.username"></el-input>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="密码" prop="password">-->
+<!--          <el-input type="password" v-model="ruleForm.password"></el-input>-->
+<!--        </el-form-item>-->
+
+<!--        <el-form-item>-->
+<!--          <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>-->
+<!--          <el-button @click="resetForm('ruleForm')">重置</el-button>-->
+<!--        </el-form-item>-->
+<!--      </el-form>-->
+
+<!--    </el-main>-->
     <div class="input_list">
       <inputitem :label="label1" :type="type1" v-model="userAccount"></inputitem>
       <inputitem :label="label2" :type="type2" v-model="passWord"></inputitem>
 
-      <span @click="resetClick" class="forget_pwd"><a href="#">忘记密码</a></span>
+      <span @click="resetClick" ><a class="forget_pwd">忘记密码</a></span>
     </div>
     <div class="button_row">
       <buttonitem @click.native="loginClick" :text="loginText"></buttonitem>
@@ -66,13 +82,21 @@
 
                     console.log(res.data)
                     let loginData = res.data
-                    const jwt = res.headers['authorization']
 
-                    // 把数据共享出去
-                    this.SET_TOKEN(jwt)
+                    if(loginData.code != 200){
+                        alert(loginData.msg)
+                    }
+                    else{
+                        const jwt = res.headers['authorization']
+                        // 把数据共享出去
+                        this.SET_TOKEN(jwt)
 
-                    this.LOGIN(loginData);
-                    this.$router.push('home')
+                        this.LOGIN(loginData);
+                        this.$router.push('home');
+                    }
+
+
+
                 })
 
             },

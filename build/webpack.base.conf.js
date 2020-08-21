@@ -51,14 +51,22 @@ module.exports = {
         limit: 10000,
         name: utils.assetsPath('img/[name].[ext]')
       }
-    }, {
-      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-      loader: 'url',
-      query: {
-        limit: 10000,
-        name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-      }
-    }]
+    },
+      {
+
+      test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+      loader: 'file-loader'
+
+    },
+    //   {
+    //   test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    //   loader: 'url',
+    //   query: {
+    //     limit: 10000,
+    //     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+    //   }
+    // }
+    ]
   },
   vue: {
     loaders: utils.cssLoaders({

@@ -7,14 +7,18 @@ import './style/common'
 import './config/rem'
 import axios from 'axios'
 
-Vue.prototype.$axios = axios
-Vue.use(VueRouter)
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.prototype.$axios = axios;
+Vue.use(VueRouter);
+Vue.use(ElementUI);
 
 const router = new VueRouter({
   routes
-})
+});
 
 new Vue({
   router,
   store,
-}).$mount('#app')
+}).$mount('#app');

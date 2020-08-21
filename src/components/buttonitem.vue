@@ -1,5 +1,7 @@
 <template>
-  <span class="button_style">{{ text }}</span>
+
+  <button class="button_style">{{ text }}</button>
+
 </template>
 
 <script>
@@ -20,6 +22,7 @@
     background: #da2a20cc;
     border-radius: 5px;
     margin: 0 65px;
+    border: none;
   }
 
 </style>
