@@ -92,10 +92,9 @@
                         this.SET_TOKEN(jwt)
                         this.LOGIN(loginData);
                         if(loginData.data.card_II){
-                            alert("您还没有II类卡，请注册II类卡！")
-                        }else{
-
                             this.$router.push('home');
+                        }else{
+                            alert("您还没有II类卡，请注册II类卡！")
                         }
                     }
 
