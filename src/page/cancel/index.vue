@@ -98,6 +98,10 @@
 
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
+                    let captcha_id = res.data.data.id
+                    let userPhoneNumber = res.data.data.userPhoneNumber
+                    let expirationDate = res.data.data.expirationDate
+                    alert(userPhoneNumber+"收到编号"+captcha_id+"的验证码短信："+captcha_code+",过期时间为"+ expirationDate)
                     this.input6 = captcha_code
                 })
 

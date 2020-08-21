@@ -11,6 +11,7 @@
       <inputitem :label="label7" :type="type7" v-model="input7"></inputitem>
       <inputitem :label="label8" :type="type8" v-model="input8"></inputitem>
       <inputitem :label="label9" :type="type9" v-model="input9"></inputitem>
+      <buttonitem @click.native="getCaptchaClick()" :text="getCaptchaText"></buttonitem>
       <inputitem :label="label10" :type="type10" v-model="input10"></inputitem>
       <inputitem :label="label11" :type="type11" v-model="input11"></inputitem>
       <inputitem :label="label12" :type="type12" v-model="input12"></inputitem>
@@ -42,6 +43,7 @@
         },
         data() {
             return {
+                getCaptchaText: "获取验证码",
                 confirmText: "确认开户",
                 cancelText: "返回登录",
                 headText: "电子II类账户开户信息登记",
@@ -128,6 +130,18 @@
             },
             cancelClick() {
                 this.$router.go(-1)
+            },
+            getCaptchaClick() {
+                this.$axios.get('http://localhost:8080/captcha/' + this.input9 + "?behavior=1").then(res => {
+                    console.log(res.data.data)
+                    let captcha_code = res.data.data.captchaCode
+                    let captcha_id = res.data.data.id
+                    let userPhoneNumber = res.data.data.userPhoneNumber
+                    let expirationDate = res.data.data.expirationDate
+                    alert(userPhoneNumber+"收到编号"+captcha_id+"的验证码短信："+captcha_code+",过期时间为"+ expirationDate)
+                    this.input10 = captcha_code
+                })
+
             },
 
         }
