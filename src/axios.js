@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from './router'
 
 
-// axios.defaults.baseURL = "http://localhost:8080"
+// axios.defaults.baseURL = "http://47.95.255.230:8080"
 
 // 前置拦截
 axios.interceptors.request.use(config => {

@@ -78,7 +78,7 @@
                     username: this.userAccount,
                     loginPassword: this.passWord
                 }
-                this.$axios.post('http://localhost:8080/login', data).then(res => {
+                this.$axios.post('http://47.95.255.230:8080/login', data).then(res => {
 
                     console.log(res.data)
                     let loginData = res.data

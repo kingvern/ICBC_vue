@@ -65,8 +65,8 @@
                 this.$router.push('cancel')
             },
             logoutClick() {
-                console.log('http://localhost:8080/logout')
-                this.$axios.get("http://localhost:8080/logout", {
+                console.log('http://47.95.255.230:8080/logout')
+                this.$axios.get("http://47.95.255.230:8080/logout", {
                     headers: {
                         "Authorization": localStorage.getItem("token")
                     }
