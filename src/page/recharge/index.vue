@@ -66,7 +66,7 @@
                     paymentPassword: this.pwd
                 }
                 console.log(data)
-                this.$axios.post('http://localhost:8080/recharge', data, {
+                this.$axios.post('http://47.95.255.230:8080/recharge', data, {
                     headers: {
                         "Authorization": localStorage.getItem("token")
                     }

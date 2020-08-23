@@ -78,7 +78,7 @@
                     captchaCode: this.input6,
 
                 }
-                this.$axios.post('http://localhost:8080/cancelAccount', data, {
+                this.$axios.post('http://47.95.255.230:8080/cancelAccount', data, {
                     headers: {
                         "Authorization": localStorage.getItem("token")
                     }
@@ -94,7 +94,7 @@
             },
             getCaptchaClick() {
 
-                this.$axios.get('http://localhost:8080/captcha/' + this.input5 + "?behavior=-1").then(res => {
+                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input5 + "?behavior=-1").then(res => {
 
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
