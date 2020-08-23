@@ -1,7 +1,6 @@
 <template>
   <div class="card_border">
     <headeritem :text="headText"></headeritem>
-<!--    <el-main>-->
 <!--      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">-->
 <!--        <el-form-item label="用户名" prop="username">-->
 <!--          <el-input v-model="ruleForm.username"></el-input>-->
@@ -15,13 +14,11 @@
 <!--          <el-button @click="resetForm('ruleForm')">重置</el-button>-->
 <!--        </el-form-item>-->
 <!--      </el-form>-->
-
-<!--    </el-main>-->
     <div class="input_list">
       <inputitem :label="label1" :type="type1" v-model="userAccount"></inputitem>
       <inputitem :label="label2" :type="type2" v-model="passWord"></inputitem>
 
-      <span @click="resetClick" ><a class="forget_pwd">忘记密码</a></span>
+      <span class="forget_span" @click="resetClick" ><a class="forget_pwd">忘记密码</a></span>
     </div>
     <div class="button_row">
       <buttonitem @click.native="loginClick" :text="loginText"></buttonitem>
@@ -78,7 +75,7 @@
                     username: this.userAccount,
                     loginPassword: this.passWord
                 }
-                this.$axios.post('http://47.95.255.230:8080/login', data).then(res => {
+                this.$axios.post('http://localhost:8080/login', data).then(res => {
 
                     console.log(res.data)
                     let loginData = res.data
@@ -124,6 +121,14 @@
     justify-content: space-around;
     align-items: flex-end;
     padding: 10px 38px;
+  }
+
+  .input_list .forget_span{
+    font-size: 22px;
+    margin-bottom: 50px;
+  }
+  .input_list .forget_span a{
+    color: dodgerblue;
   }
 
   .card_border {

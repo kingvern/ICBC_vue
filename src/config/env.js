@@ -7,9 +7,9 @@
 let baseUrl;
 
 if (process.env.NODE_ENV == 'development') {
-  baseUrl = 'http://47.95.255.230:8080';
+  baseUrl = 'http://localhost:8080';
 } else {
-  baseUrl = 'http://47.95.255.230:8080';
+  baseUrl = 'http://localhost:8080';
 }
 
 export {

@@ -64,7 +64,7 @@
                 input3: '',
                 input4: '',
                 input5: '18210443801',
-                input6: '1',
+                input6: '',
                 input7: 'qwerty',
                 input8: 'qwerty',
             }
@@ -96,7 +96,7 @@
                     loginPasswordConfirm: this.input8
                 }
 
-                this.$axios.post("http://47.95.255.230:8080/reset",  data).then(res => {
+                this.$axios.post("http://localhost:8080/reset",  data).then(res => {
                     console.log(res.data)
                     this.$router.push('login')
 
@@ -106,7 +106,7 @@
                 this.$router.go(-1)
             },
             getCaptchaClick() {
-                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input5 + "?behavior=0").then(res => {
+                this.$axios.get('http://localhost:8080/captcha/' + this.input5 + "?behavior=0").then(res => {
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
                     let captcha_id = res.data.data.id

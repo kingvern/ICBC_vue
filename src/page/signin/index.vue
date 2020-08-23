@@ -80,7 +80,7 @@
                 input7: '中国工商银行(北京分行)',
                 input8: '9559480089071474411',
                 input9: '18210443801',
-                input10: '1',
+                input10: '',
                 input11: '000000',
                 input12: '000000',
             }
@@ -114,7 +114,7 @@
                     paymentPasswordConfirm: this.input12
                 }
 
-                this.$axios.post("http://47.95.255.230:8080/createAccount", data).then(res => {
+                this.$axios.post("http://localhost:8080/createAccount", data).then(res => {
                     console.log(res.data)
                     let signinData = res.data
 
@@ -132,7 +132,7 @@
                 this.$router.go(-1)
             },
             getCaptchaClick() {
-                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input9 + "?behavior=1").then(res => {
+                this.$axios.get('http://localhost:8080/captcha/' + this.input9 + "?behavior=1").then(res => {
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
                     let captcha_id = res.data.data.id
