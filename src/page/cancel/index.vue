@@ -53,11 +53,11 @@
                 type4: 'password',
                 type5: 'text',
                 type6: 'text',
-                input1: '张三-1',
-                input2: '440102198001021231',
-                input3: '9559480089071474421',
-                input4: '000000',
-                input5: '18210443801',
+                input1: this.$store.state.userInfo.username,
+                input2: this.$store.state.userInfo.idCard,
+                input3: this.$store.state.card_II.cardId,
+                input4: this.$store.state.card_II.paymentPassword,
+                input5: this.$store.state.userInfo.phoneNumber,
                 input6: ''
             }
         },
@@ -78,15 +78,21 @@
                     captchaCode: this.input6,
 
                 }
-                this.$axios.post('http://47.95.255.230:8080/cancelAccount', data, {
-                    headers: {
-                        "Authorization": localStorage.getItem("token")
-                    }
-                }).then(res => {
-                    console.log(res.data)
-                    this.CANCEL(res.data.data.cardId);
-                    this.$router.push('cancelsucc')
-                })
+                console.log(this.$store.state)
+                if(this.$store.state.card_II.balance == 0){
+                    this.$axios.post('http://47.95.255.230:8080/cancelAccount', data, {
+                        headers: {
+                            "Authorization": localStorage.getItem("token")
+                        }
+                    }).then(res => {
+                        console.log(res.data)
+                        this.CANCEL(res.data.data.cardId);
+                        this.$router.push('cancelsucc')
+                    })
+
+                }else{
+                    alert("余额不为零，请提现后注销")
+                }
 
             },
             cancelClick() {

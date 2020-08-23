@@ -73,9 +73,16 @@
                 }).then(res => {
                     console.log(res.data)
                     let txData = res.data
+                    if(txData.code != 200){
+                        alert(txData.msg)
+                    }
+                    else{
 
-                    this.SETBALANCE(txData);
-                    this.$router.push('rechargesucc')
+                        this.SETBALANCE(txData);
+                        this.$router.push('rechargesucc')
+
+                    }
+
                 })
             },
             backClick() {

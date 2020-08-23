@@ -75,8 +75,14 @@
                     console.log(res.data)
                     let txData = res.data
 
-                    this.SETBALANCE(txData);
-                    this.$router.push('withdrawsucc')
+                    if(txData.code != 200){
+                        alert(txData.msg)
+                    }
+                    else {
+
+                        this.SETBALANCE(txData);
+                        this.$router.push('withdrawsucc')
+                    }
                 })
             },
             backClick() {

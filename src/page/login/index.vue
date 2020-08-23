@@ -49,7 +49,7 @@
                 signinText: "注册开户",
                 loginText: "点击登录",
                 headText: "电子II类账户充值服务平台",
-                label1: 'I类卡/II类卡号/电话号码',
+                label1: '身份证号/电话号码',
                 label2: '登录密码',
                 type1: 'text',
                 type2: 'password',
