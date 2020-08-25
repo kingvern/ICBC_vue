@@ -1,8 +1,8 @@
 {
-  "name": "happyfri",
+  "name": "cardWeb",
   "version": "1.0.2",
-  "description": "vue2-happyfri",
-  "author": "cangdu <1264889788@qq.com>",
+  "description": "cardWeb",
+  "author": "kingvern",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

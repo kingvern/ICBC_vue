@@ -1,19 +1,19 @@
-Arguments: 
+Arguments:
   /usr/local/Cellar/nvm/0.35.1/versions/node/v13.2.0/bin/node /Users/kingvern/.yarn/bin/yarn.js
 
-PATH: 
-  /Users/kingvern/.yarn/bin:/Users/kingvern/.config/yarn/global/node_modules/.bin:/usr/local/opt/nvm/versions/node/v13.2.0/bin:/Users/kingvern/anaconda2/envs/ml/bin:/Users/kingvern/anaconda2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/kingvern/Workspace/工商银行/vue2-happyfri/node_modules/.bin
+PATH:
+  /Users/kingvern/.yarn/bin:/Users/kingvern/.config/yarn/global/node_modules/.bin:/usr/local/opt/nvm/versions/node/v13.2.0/bin:/Users/kingvern/anaconda2/envs/ml/bin:/Users/kingvern/anaconda2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/kingvern/Workspace/工商银行/vue2-cardWeb/node_modules/.bin
 
-Yarn version: 
+Yarn version:
   1.19.1
 
-Node version: 
+Node version:
   13.2.0
 
-Platform: 
+Platform:
   darwin x64
 
-Trace: 
+Trace:
   Error: http://registry.npm.taobao.org/vue: Invalid protocol: socks5:
       at Request.module.exports.Request.init (/Users/kingvern/.yarn/lib/cli.js:140833:31)
       at new Request (/Users/kingvern/.yarn/lib/cli.js:140506:8)
@@ -26,11 +26,11 @@ Trace:
       at RequestManager.request (/Users/kingvern/.yarn/lib/cli.js:66693:19)
       at NpmRegistry.<anonymous> (/Users/kingvern/.yarn/lib/cli.js:31704:42)
 
-npm manifest: 
+npm manifest:
   {
-    "name": "happyfri",
+    "name": "cardWeb",
     "version": "1.0.2",
-    "description": "vue2-happyfri",
+    "description": "vue2-cardWeb",
     "author": "cangdu <1264889788@qq.com>",
     "private": true,
     "scripts": {
@@ -86,8 +86,8 @@ npm manifest:
     }
   }
 
-yarn manifest: 
+yarn manifest:
   No manifest
 
-Lockfile: 
+Lockfile:
   No lockfile

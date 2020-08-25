@@ -7,12 +7,12 @@ import './style/common'
 import './config/rem'
 import axios from 'axios'
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.prototype.$axios = axios;
 Vue.use(VueRouter);
-// Vue.use(ElementUI);
+Vue.use(ElementUI);
 
 const router = new VueRouter({
   routes

@@ -1,23 +1,49 @@
 <template>
   <div class="card_border">
     <headeritem :text="headText"></headeritem>
-    <div class="input_list">
-      <inputitem :label="label1" :type="type1" v-model="input1"></inputitem>
-      <inputitem :label="label2" :type="type2" v-model="input2"></inputitem>
-<!--      <inputitem :label="label3" :type="type3" v-model="input1"></inputitem>-->
-<!--      <inputitem :label="label4" :type="type4" v-model="input1"></inputitem>-->
-      <inputitem :label="label5" :type="type5" v-model="input5"></inputitem>
-      <buttonitem @click.native="getCaptchaClick()" :text="getCaptchaText"></buttonitem>
-      <inputitem :label="label6" :type="type6" v-model="input6"></inputitem>
-      <inputitem :label="label7" :type="type7" v-model="input7"></inputitem>
-      <inputitem :label="label8" :type="type8" v-model="input8"></inputitem>
 
-    </div>
-    <div class="button_row">
-      <buttonitem @click.native="confirmClick" :text="confirmText"></buttonitem>
-      <buttonitem @click.native="cancelClick" :text="cancelText"></buttonitem>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="300px" class="demo-ruleForm">
+      <el-form-item label="姓名：" prop="username">
+        <el-input v-model="ruleForm.username"></el-input>
+      </el-form-item>
+      <el-form-item label="身份证号：" prop="idCard">
+        <el-input v-model="ruleForm.idCard"></el-input>
+      </el-form-item>
+      <el-form-item label="预留手机号码：" prop="phoneNumber">
+        <el-input v-model="ruleForm.phoneNumber"></el-input>
+        <el-button type="danger" @click="getCaptchaClick()">获取验证码</el-button>
+      </el-form-item>
+      <el-form-item label="短信验证码：" prop="captchaCode">
+        <el-input v-model="ruleForm.captchaCode"></el-input>
+      </el-form-item>
+      <el-form-item label="设置登录密码：" prop="loginPassword">
+        <el-input type="password" v-model="ruleForm.loginPassword"></el-input>
+      </el-form-item>
+      <el-form-item label="再次输入密码：" prop="loginPasswordConfirm">
+        <el-input type="password" v-model="ruleForm.loginPasswordConfirm"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="danger" @click="confirmClick('ruleForm')">确认开户</el-button>
+        <el-button type="danger" @click="cancelClick()">返回登录</el-button>
+      </el-form-item>
+    </el-form>
+    <!--    <div class="input_list">-->
+    <!--      <inputitem :label="label1" :type="type1" v-model="input1"></inputitem>-->
+    <!--      <inputitem :label="label2" :type="type2" v-model="input2"></inputitem>-->
+    <!--&lt;!&ndash;      <inputitem :label="label3" :type="type3" v-model="input1"></inputitem>&ndash;&gt;-->
+    <!--&lt;!&ndash;      <inputitem :label="label4" :type="type4" v-model="input1"></inputitem>&ndash;&gt;-->
+    <!--      <inputitem :label="label5" :type="type5" v-model="input5"></inputitem>-->
+    <!--      <buttonitem @click.native="getCaptchaClick()" :text="getCaptchaText"></buttonitem>-->
+    <!--      <inputitem :label="label6" :type="type6" v-model="input6"></inputitem>-->
+    <!--      <inputitem :label="label7" :type="type7" v-model="input7"></inputitem>-->
+    <!--      <inputitem :label="label8" :type="type8" v-model="input8"></inputitem>-->
 
-    </div>
+    <!--    </div>-->
+    <!--    <div class="button_row">-->
+    <!--      <buttonitem @click.native="confirmClick" :text="confirmText"></buttonitem>-->
+    <!--      <buttonitem @click.native="cancelClick" :text="cancelText"></buttonitem>-->
+
+    <!--    </div>-->
 
   </div>
 </template>
@@ -39,6 +65,15 @@
         },
         data() {
             return {
+                ruleForm: {
+                    username: '',
+                    idCard: '',
+                    phoneNumber: '',
+                    captchaCode: '',
+                    loginPassword: '',
+                    loginPasswordConfirm: '',
+                },
+                rules: {},
                 confirmText: "确认提交",
                 cancelText: "返回登录",
                 headText: "忘记登录密码",
@@ -80,27 +115,31 @@
             // ...mapMutations([
             //     // 'addNum', 'initializeData',
             // ]),
-            confirmClick() {
-                // let form = {
-                //     input: this.input1
-                // };
-                // let resetData = await resetApi(form);
-                // // this.CANCEL(card_II_idData.card_II_id);
-                // this.$router.push('resetsucc')
-                let data = {
-                    username: this.input1,
-                    idCard: this.input2,
-                    phoneNumber: this.input5,
-                    captchaCode: this.input6,
-                    loginPassword: this.input7,
-                    loginPasswordConfirm: this.input8
-                }
+            confirmClick(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        // let form = {
+                        //     input: this.input1
+                        // };
+                        // let resetData = await resetApi(form);
+                        // // this.CANCEL(card_II_idData.card_II_id);
+                        // this.$router.push('resetsucc')
+                        // let data = {
+                        //     username: this.input1,
+                        //     idCard: this.input2,
+                        //     phoneNumber: this.input5,
+                        //     captchaCode: this.input6,
+                        //     loginPassword: this.input7,
+                        //     loginPasswordConfirm: this.input8
+                        // }
 
-                this.$axios.post("http://47.95.255.230:8080/reset",  data).then(res => {
-                    console.log(res.data)
-                    this.$router.push('login')
+                        this.$axios.post("http://47.95.255.230:8080/reset", this.ruleForm).then(res => {
+                            console.log(res.data)
+                            this.$router.push('login')
 
-                })
+                        })
+                    }
+                });
             },
             cancelClick() {
                 this.$router.go(-1)
@@ -112,7 +151,7 @@
                     let captcha_id = res.data.data.id
                     let userPhoneNumber = res.data.data.userPhoneNumber
                     let expirationDate = res.data.data.expirationDate
-                    alert(userPhoneNumber+"收到编号"+captcha_id+"的验证码短信："+captcha_code+",过期时间为"+ expirationDate)
+                    alert(userPhoneNumber + "收到编号" + captcha_id + "的验证码短信：" + captcha_code + ",过期时间为" + expirationDate)
                     this.input6 = captcha_code
                 })
 
@@ -155,6 +194,8 @@
     margin-bottom: 40px;
 
   }
-
+  .el-input{
+    width: 70%;
+  }
 
 </style>
