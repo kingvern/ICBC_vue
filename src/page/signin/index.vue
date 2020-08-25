@@ -76,6 +76,7 @@
     import inputitem from '../../components/inputitem'
     import {mapState, mapMutations} from 'vuex'
     import {signinApi} from "../../service/getData";
+    import * as config from '../../config/env'
 
     export default {
         name: 'reset',
@@ -161,7 +162,7 @@
                         // this.SIGNIN(this.loginData);
                         // this.$router.push('signinsucc')
 
-                        this.$axios.post("http://47.95.255.230:8080/createAccount", this.ruleForm).then(res => {
+                        this.$axios.post(config.baseUrl + "/createAccount", this.ruleForm).then(res => {
                             console.log(res.data)
                             let signinData = res.data
 
@@ -181,7 +182,7 @@
                 this.$router.go(-1)
             },
             getCaptchaClick() {
-                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input9 + "?behavior=1").then(res => {
+                this.$axios.get(config.baseUrl + '/captcha/' + this.input9 + "?behavior=1").then(res => {
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
                     let captcha_id = res.data.data.id

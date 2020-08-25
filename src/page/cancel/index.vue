@@ -53,6 +53,7 @@
     import inputitem from '../../components/inputitem'
     import {mapState, mapMutations} from 'vuex'
     import {cancelApi} from "../../service/getData";
+    import * as config from '../../config/env'
 
     export default {
         name: 'cancel',
@@ -121,7 +122,7 @@
                         // }
                         console.log(this.$store.state)
                         if (this.$store.state.card_II.balance == 0) {
-                            this.$axios.post('http://47.95.255.230:8080/cancelAccount', this.ruleForm, {
+                            this.$axios.post(config.baseUrl + '/cancelAccount', this.ruleForm, {
                                 headers: {
                                     "Authorization": localStorage.getItem("token")
                                 }
@@ -142,7 +143,7 @@
             },
             getCaptchaClick() {
 
-                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input5 + "?behavior=-1").then(res => {
+                this.$axios.get(config.baseUrl + '/captcha/' + this.input5 + "?behavior=-1").then(res => {
 
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode

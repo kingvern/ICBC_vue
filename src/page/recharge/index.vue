@@ -47,6 +47,7 @@
     import balanceitem from "../../components/balanceitem";
     import {mapState, mapMutations} from 'vuex'
     import {rechargeApi} from "../../service/getData";
+    import * as config from '../../config/env'
 
     export default {
         name: 'recharge',
@@ -103,7 +104,7 @@
                             paymentPassword: this.ruleForm.password
                         };
                         console.log(data);
-                        this.$axios.post('http://47.95.255.230:8080/recharge', data, {
+                        this.$axios.post(config.baseUrl + '/recharge', data, {
                             headers: {
                                 "Authorization": localStorage.getItem("token")
                             }

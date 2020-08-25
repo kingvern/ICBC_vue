@@ -31,6 +31,8 @@
     import {mapState, mapMutations} from 'vuex'
     import {logoutApi} from '../../service/getData'
 
+    import * as config from '../../config/env'
+
     export default {
         name: 'home',
         components: {
@@ -66,7 +68,7 @@
             },
             logoutClick() {
                 console.log('http://47.95.255.230:8080/logout')
-                this.$axios.get("http://47.95.255.230:8080/logout", {
+                this.$axios.get(config.baseUrl + "/logout", {
                     headers: {
                         "Authorization": localStorage.getItem("token")
                     }

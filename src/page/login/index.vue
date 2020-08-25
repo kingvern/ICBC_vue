@@ -37,6 +37,7 @@
     import inputitem from '../../components/inputitem'
     import {mapState, mapMutations} from 'vuex'
     import {loginApi} from '../../service/getData'
+    import * as config from '../../config/env'
 
     export default {
         name: 'login',
@@ -82,7 +83,7 @@
                             username: this.ruleForm.username,
                             loginPassword: this.ruleForm.password
                         }
-                        this.$axios.post('http://47.95.255.230:8080/login', data).then(res => {
+                        this.$axios.post(config.baseUrl + '/login', data).then(res => {
 
                             console.log(res.data)
                             let loginData = res.data

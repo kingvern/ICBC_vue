@@ -47,6 +47,7 @@
     import textitem from '../../components/textitem'
     import {mapState, mapMutations} from 'vuex'
     import {withdrawApi} from "../../service/getData";
+    import * as config from '../../config/env'
 
     export default {
         name: 'withdraw',
@@ -101,7 +102,7 @@
                             paymentPassword: this.ruleForm.password
                         };
                         console.log(data);
-                        this.$axios.post('http://47.95.255.230:8080/withdraw', data, {
+                        this.$axios.post(config.baseUrl + '/withdraw', data, {
                             headers: {
                                 "Authorization": localStorage.getItem("token")
                             }

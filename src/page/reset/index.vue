@@ -55,6 +55,7 @@
     import inputitem from '../../components/inputitem'
     import {mapState, mapMutations} from 'vuex'
     import {resetApi} from "../../service/getData";
+    import * as config from '../../config/env'
 
     export default {
         name: 'reset',
@@ -118,12 +119,6 @@
             confirmClick(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        // let form = {
-                        //     input: this.input1
-                        // };
-                        // let resetData = await resetApi(form);
-                        // // this.CANCEL(card_II_idData.card_II_id);
-                        // this.$router.push('resetsucc')
                         // let data = {
                         //     username: this.input1,
                         //     idCard: this.input2,
@@ -133,7 +128,7 @@
                         //     loginPasswordConfirm: this.input8
                         // }
 
-                        this.$axios.post("http://47.95.255.230:8080/reset", this.ruleForm).then(res => {
+                        this.$axios.post(config.baseUrl + "/reset", this.ruleForm).then(res => {
                             console.log(res.data)
                             this.$router.push('login')
 
@@ -145,7 +140,7 @@
                 this.$router.go(-1)
             },
             getCaptchaClick() {
-                this.$axios.get('http://47.95.255.230:8080/captcha/' + this.input5 + "?behavior=0").then(res => {
+                this.$axios.get(config.baseUrl + '/captcha/' + this.input5 + "?behavior=0").then(res => {
                     console.log(res.data.data)
                     let captcha_code = res.data.data.captchaCode
                     let captcha_id = res.data.data.id
